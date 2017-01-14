@@ -51,19 +51,10 @@ def get_buzzfeed_docs():
 
     
     print "END OF LOOP -------------------------"
+    
     # open file for dumping
-    f = open('../data/buzz.csv', 'w')
-    csvwriter = csv.writer(f)
-
-    # Load it into a csv file
-    count = 0
-    for data in docs:
-        if count == 0:
-            header = docs[0].keys()
-            csvwriter.writerow(header)
-            count += 1
-        csvwriter.writerow(data.values())
-
+    with open('../data/buzzfeed.json', 'w') as fp:
+        json.dump(docs, fp)
             
 
     print "Finished with "+ str(total) + " English Articles"
