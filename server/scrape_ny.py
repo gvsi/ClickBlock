@@ -8,6 +8,7 @@ import csv
 from bs4 import BeautifulSoup
 
 titles = []
+documents = []
 total = 0
 for i in range(1, 200):
 
@@ -24,7 +25,8 @@ for i in range(1, 200):
             print obj['response']['docs'][i]['headline']['main']
             titles.append(obj)
             print "------"
-            doc = {'clickbait': 1, 'title': obj['response']['docs'][i]['headline']['main']}
+            doc = {'clickbait': 0, 'title': obj['response']['docs'][i]['headline']['main']}
+            documents.append(doc)
             total += 1
 
     
