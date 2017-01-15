@@ -36,7 +36,7 @@ def verify():
     headers = {'Content-Type': "application/json", 'Accept': 'application/json'}
     data = {
         "url": link,
-        "max_sent": 1,
+        "max_sent": 10,
         "lang": "en"
     }
 
@@ -50,6 +50,7 @@ def verify():
     title = d["meta"]["opengraph"]["title"]
     newtitle = d["meta"]["opengraph"]["description"].encode('ascii', 'ignore')
     summary = d["summary"][0].encode('ascii', 'ignore')
+    longsummary = "<br>".join(d["summary"])
 
     # clickbaitProb = 1;
     vectorizer = joblib.load('learning/vectorizer.pkl')
@@ -62,10 +63,12 @@ def verify():
     print "Title:", newtitle
     print "Summary:", summary
     print "isClickbait", clickbait_probs
+    print "Long Summary:"
 
+    print longsummary
     print '\n'
 
-    result = {'title': newtitle, 'summary':summary, 'clickbait': clickbait_probs[1]}
+    result = {'title': newtitle, 'summary':summary, 'clickbait': clickbait_probs[1], 'long_summary': longsummary}
     return jsonify(**result)
 
 if __name__ == '__main__':
