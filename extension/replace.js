@@ -24,8 +24,6 @@ function replaceText() {
 
 			console.log(realHref);
 
-			$(a).html("<div>This is my text</div>");
-
 			$(this).addClass('clickblocked');
 
 			// $.ajax({
@@ -39,15 +37,18 @@ function replaceText() {
 			data = {link: realHref};
 
 			chrome.runtime.sendMessage({
-			    method: 'POST',
+			    method: 'GET',
 					action: "xhttp",
 			    url: 'https://cryptic-shelf-41509.herokuapp.com/verifybait',
 			    data: data
 			}, function(response) {
-					console.log('me');
-			    console.log(response);
 					if (response) {
-						$(a).html("<div>"+response["summary"]+"</div>");
+						userContent = $(a).closest(":has(.userContent)").find('.userContent');
+						userContent.html(response["summary"])
+						console.log(response["summary"]);
+						// console.log(userContent);
+						$(a).html("<div>Loading new title...</div>");
+						$(a).html("<div>"+response["title"]+"</div>");
 					}
 			    /*Callback function to deal with the response*/
 			});
