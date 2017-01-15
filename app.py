@@ -37,11 +37,11 @@ def verify():
         print r.status_code
         d = r.json()
         
-        newtitle = d["meta"]["opengraph"]["description"]
-        summary = d["summary"][0]
+        newtitle = d["meta"]["opengraph"]["description"].encode('ascii', 'ignore')
+        summary = d["summary"][0].encode('ascii', 'ignore')
         
-        print "Title:", newtitle
-        print "Summary:", summary
+        print "Title:", newtitle.encode('ascii', 'ignore')
+        print "Summary:", summary.encode('ascii', 'ignore')
 
         result = {'title': newtitle, 'summary': summary, 'clickbait': 1}
 
