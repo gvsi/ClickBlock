@@ -33,6 +33,7 @@ def verify():
         }
         
         r = requests.post(url, headers=headers, data=json.dumps(data))
+        print r.text
         d = json.loads(r.text)
         
         newtitle = d["meta"]["opengraph"]["description"].encode('ascii', 'ignore')
