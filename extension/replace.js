@@ -42,9 +42,14 @@ function replaceText() {
 			    url: 'https://cryptic-shelf-41509.herokuapp.com/verifybait',
 			    data: data
 			}, function(response) {
-					if (response && response[clickbaitProb] >= 0.60) {
+					if (response && response['clickbait'] >= 0.60) {
 						userContent = $(a).closest(":has(.userContent)").find('.userContent');
-						userContent.html(response["summary"])
+						userContent.html("<b>" + Math.round(response['clickbait'] * 100) + "% probability of being a clickbait</b> <br><br>" + response["summary"]);
+
+						var opacity = 0.20 * response['clickbait']
+						$(a).closest(":has(._1dwg)").find('._1dwg').css("background-color", "rgba(255,0,0,"+opacity+")");
+						$(a).closest(":has(._ohe)").find('._ohe').css("background-color", "rgba(255,0,0,"+opacity+")");
+
 						console.log(response["summary"]);
 
 						$(a).html("<div>Loading new title...</div>");
