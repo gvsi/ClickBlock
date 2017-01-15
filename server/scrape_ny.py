@@ -9,7 +9,7 @@ from bs4 import BeautifulSoup
 
 titles = []
 
-for i in range(1, 102):
+for i in range(1, 200):
 
     # url = "http://query.nytimes.com/search/sitesearch/#/*/30days/document_type%3A%22article%22/"+ str(i) + "/allauthors/newest/"
     url = "http://query.nytimes.com/svc/add/v1/sitesearch.json?begin_date=30daysago&sort=desc&page="+str(i)+"&fq=document_type%3A%22article%22&facet=true"
@@ -20,7 +20,7 @@ for i in range(1, 102):
         response = urllib2.urlopen(req)
         # print response
         obj = json.loads(response.read())
-        for i in range(len(obj['reponse']['docs']))
+        for i in range(len(obj['response']['docs'])):
             print obj['response']['docs'][i]['headline']['main']
             titles.append(obj)
             print "------"
@@ -32,6 +32,7 @@ for i in range(1, 102):
         print "ERROR --------"
         print e.reason
 
+json.dumps()
 
 print "FINISHED"
 
