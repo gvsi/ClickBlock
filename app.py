@@ -40,8 +40,8 @@ def verify():
         newtitle = d["meta"]["opengraph"]["description"].encode('ascii', 'ignore')
         summary = d["summary"][0].encode('ascii', 'ignore')
         
-        print "Title:", newtitle.encode('ascii', 'ignore')
-        print "Summary:", summary.encode('ascii', 'ignore')
+        print "Title:", newtitle
+        print "Summary:", summary
 
         result = {'title': newtitle, 'summary': summary, 'clickbait': 1}
 
