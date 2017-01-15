@@ -19,30 +19,32 @@ clean_train_titles = []
 for i in xrange( 0, num_titles ):
     clean_train_titles.append( article_to_words( train["title"][i] ) )
 
-from sklearn.feature_extraction.text import CountVectorizer #TfidfVectorizer
+from sklearn.feature_extraction.text import TfidfVectorizer #TfidfVectorizer
 
 
-vectorizer = CountVectorizer(analyzer = "word",   \
-                             tokenizer = None,    \
-                             preprocessor = None, \
-                             stop_words = None,   \
-                             max_features = 5000)
+vectorizer = TfidfVectorizer(ngram_range=(1, 3),
+                             lowercase=True,
+                             stop_words='english',
+                             strip_accents='unicode',
+                             min_df=2,
+                             norm='l2')
 
 train_data_features = vectorizer.fit_transform(clean_train_titles)
 train_data_features = train_data_features.toarray()
 
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.linear_model import LogisticRegressionCV
+#from sklearn.ensemble import RandomForestClassifier
+#from sklearn.linear_model import LogisticRegressionCV
+from sklearn.naive_bayes import MultinomialNB
 
-forest = RandomForestClassifier(n_estimators = 100)
-forest = forest.fit( train_data_features, train["clickbait"] )
-
-#forest = LogisticRegressionCV()
+#forest = RandomForestClassifier(n_estimators = 100)
 #forest = forest.fit( train_data_features, train["clickbait"] )
+
+forest = MultinomialNB()
+forest = forest.fit( train_data_features, train["clickbait"] )
 
 from sklearn.externals import joblib
 joblib.dump(forest, 'learned.pkl')
-joblib.dump(vectorizer.vocabulary_, 'vectorizer.pkl')
+joblib.dump(vectorizer, 'vectorizer.pkl')
 
 
 # TESTING
