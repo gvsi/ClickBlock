@@ -25,7 +25,7 @@ def verify():
         # send a post request to extention
         # r = requests.post('http://extentionhere.com', data = {'result': result})
         url = "https://explaintome.herokuapp.com/api/v1.0/summary"
-        headers = {'Content-Type': "application/json", 'Accept': '*/*'}
+        headers = {'Content-Type': "application/json", 'Accept': 'application/json'}
         data = {
             "url": request.form.get('link'),
             "max_sent": 1,
@@ -33,8 +33,8 @@ def verify():
         }
         
         r = requests.post(url, headers=headers, data=json.dumps(data))
-        print r.text
-        d = json.loads(r.text)
+        print r.status_code
+        d = r.json
         
         newtitle = d["meta"]["opengraph"]["description"].encode('ascii', 'ignore')
         summary = d["summary"][0].encode('ascii', 'ignore')
