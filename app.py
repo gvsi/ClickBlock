@@ -1,7 +1,7 @@
 from flask import Flask, request, url_for
 from flask_jsonpify import jsonify
 import requests
-from nltk.corpus import stopwords
+# from nltk.corpus import stopwords
 from sklearn.externals import joblib
 import re
 import json
@@ -11,9 +11,9 @@ app = Flask(__name__)
 def article_to_words( article ):
     letters_only = re.sub("[^a-zA-Z0-9]", " ", article)
     words = letters_only.lower().split()
-    stops = set(stopwords.words("english"))
-    meaningful_words = [w for w in words if not w in stops]
-    return( " ".join( meaningful_words ))
+    # stops = set(stopwords.words("english"))
+    # meaningful_words = [w for w in words if not w in stops]
+    return( " ".join( words ))
 
 
 @app.route('/')
