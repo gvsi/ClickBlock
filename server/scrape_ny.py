@@ -25,7 +25,7 @@ for i in range(1, 100):
             print obj['response']['docs'][j]['headline']['main']
             titles.append(obj)
             print "------"
-            doc = {'clickbait': 0, 'title': obj['response']['docs'][j]['headline']['main']}
+            doc = {'clickbait': 0, 'title': obj['response']['docs'][j]['headline']['main'].encode('ascii', 'ignore')}
             documents.append(doc)
             total += 1
 
