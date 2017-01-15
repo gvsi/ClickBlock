@@ -35,8 +35,8 @@ def verify():
         r = requests.post(url, headers=headers, data=json.dumps(data))
         d = json.loads(r.text)
         
-        newtitle = d["meta"]["opengraph"]["description"]
-        summary = d["summary"][0]
+        newtitle = d["meta"]["opengraph"]["description"].encode('ascii', 'ignore')
+        summary = d["summary"][0].encode('ascii', 'ignore')
         
         print "Title:", newtitle
         print "Summary:", summary
