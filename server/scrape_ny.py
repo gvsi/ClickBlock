@@ -32,7 +32,12 @@ for i in range(1, 200):
         print "ERROR --------"
         print e.reason
 
-json.dumps()
+# open file for dumping
+with open('../data/new_nytimes.json', 'w') as fp:
+    json.dump(docs, fp)
+            
+
+print "Finished with "+ str(total) + " NY Times Articles"
 
 print "FINISHED"
 
