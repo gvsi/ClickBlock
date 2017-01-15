@@ -49,5 +49,6 @@ def verify():
         return 'Please make a POST request to get summary, corrected title and clickbait'
 
 if __name__ == '__main__':
-    context = (os.getcwd()+'/../server.crt', os.getcwd()+'/../server.key')
-    app.run(host='0.0.0.0', port=5000, ssl_context=context, threaded=True, debug=True)
+    # context = (os.getcwd()+'/../server.crt', os.getcwd()+'/../server.key')
+    # app.run(host='0.0.0.0', port=5000, ssl_context=context, threaded=True, debug=True)
+        app.run(host='0.0.0.0', port=5000, threaded=True, debug=True)
