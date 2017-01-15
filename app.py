@@ -2,7 +2,7 @@ from flask import Flask, request, url_for
 from flask_jsonpify import jsonify
 import requests
 # from nltk.corpus import stopwords
-from sklearn import joblib
+from sklearn.externals import joblib
 import re
 import json
 
