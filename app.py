@@ -1,6 +1,6 @@
 from flask import Flask, request, url_for
 import requests
-import jsonify
+from flask.ext.jsonpify import jsonify
 import os
 import json
 app = Flask(__name__)
