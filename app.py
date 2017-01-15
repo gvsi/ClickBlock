@@ -16,9 +16,9 @@ def hello_world():
 
 @app.route('/verifybait', methods=['POST', 'GET'])
 def verify():
-    if request.method == 'POST':
+    if request.method == 'POST' or 'GET':
         #print request.form.get('title')
-        print request.form.get('link')
+        print request.args.get('link')
 
         # do computation with title and link
         result = "not bait"
