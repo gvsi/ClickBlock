@@ -11,10 +11,9 @@ def article_to_words( article ):
     return( " ".join( meaningful_words ))
 
 
-from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.feature_extraction.text import TfidfVectorizer
 
-vocabulary_to_load = joblib.load('vectorizer.pkl')
-vectorizer = CountVectorizer(vocabulary=vocabulary_to_load)
+vectorizer = joblib.load('vectorizer.pkl')
 
 test = pd.read_json("test-data.json")
 
@@ -30,16 +29,17 @@ test_data_features = test_data_features.toarray()
 
 forest = joblib.load('learned.pkl')
 
-result = forest.predict(test_data_features)
+result = forest.predict_proba(test_data_features)
+print result[:,1]
 
-
-wrong = 0
-total = 0
-
-for i in xrange(0,num_titles):
-    if test["clickbait"][i] != result[i] :
-        wrong+=1
-
-    total+=1
-
-print (float((total-wrong))/total)*100
+# wrong = 0
+# total = 0
+#
+# for i in xrange(0,num_titles):
+#     if test["clickbait"][i] != result[i] :
+#         wrong+=1
+#
+#     total+=1
+#
+#
+# print (float((total-wrong))/total)*100
