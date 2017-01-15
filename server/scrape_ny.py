@@ -10,10 +10,10 @@ from bs4 import BeautifulSoup
 titles = []
 documents = []
 total = 0
-for i in range(1, 200):
+for i in range(1, 365):
 
     # url = "http://query.nytimes.com/search/sitesearch/#/*/30days/document_type%3A%22article%22/"+ str(i) + "/allauthors/newest/"
-    url = "http://query.nytimes.com/svc/add/v1/sitesearch.json?begin_date=30daysago&sort=desc&page="+str(i)+"&fq=document_type%3A%22article%22&facet=true"
+    url = "http://query.nytimes.com/svc/add/v1/sitesearch.json?begin_date="+str(i)+"daysago&sort=desc&page=99&fq=document_type%3A%22article%22&facet=true"
     req = urllib2.Request(url, headers={'User-Agent': 'Mozilla/5.0'}) 
 
     # print "Reading " + url + " -------"
@@ -33,10 +33,11 @@ for i in range(1, 200):
     except URLError as e:
         print "ERROR --------"
         print e.reason
+        break
 
 # open file for dumping
-with open('../data/new_nytimes.json', 'w') as fp:
-    json.dump(docs, fp)
+with open('data/new_nytimes2.json', 'w') as fp:
+    json.dump(documents, fp)
             
 
 print "Finished with "+ str(total) + " NY Times Articles"
