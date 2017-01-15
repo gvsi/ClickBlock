@@ -29,17 +29,17 @@ test_data_features = test_data_features.toarray()
 
 forest = joblib.load('learned.pkl')
 
-result = forest.predict_proba(test_data_features)
-print result[:,1]
+result = forest.predict(test_data_features)
+#print result[:,1]
 
-# wrong = 0
-# total = 0
-#
-# for i in xrange(0,num_titles):
-#     if test["clickbait"][i] != result[i] :
-#         wrong+=1
-#
-#     total+=1
-#
-#
-# print (float((total-wrong))/total)*100
+wrong = 0
+total = 0
+
+for i in xrange(0,num_titles):
+    if test["clickbait"][i] != result[i] :
+        wrong+=1
+
+    total+=1
+
+
+print (float((total-wrong))/total)*100
