@@ -8,7 +8,7 @@ import csv
 from bs4 import BeautifulSoup
 
 titles = []
-
+total = 0
 for i in range(1, 200):
 
     # url = "http://query.nytimes.com/search/sitesearch/#/*/30days/document_type%3A%22article%22/"+ str(i) + "/allauthors/newest/"
@@ -25,7 +25,7 @@ for i in range(1, 200):
             titles.append(obj)
             print "------"
             doc = {'clickbait': 1, 'title': obj['response']['docs'][i]['headline']['main']}
-
+            total += 1
 
     
     except URLError as e:
