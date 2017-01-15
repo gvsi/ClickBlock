@@ -37,8 +37,8 @@ def verify():
         print r.status_code
         d = r.json
         
-        newtitle = d["meta"]["opengraph"]["description"].encode('ascii', 'ignore')
-        summary = d["summary"][0].encode('ascii', 'ignore')
+        newtitle = d["meta"]["opengraph"]["description"]
+        summary = d["summary"][0]
         
         print "Title:", newtitle
         print "Summary:", summary
