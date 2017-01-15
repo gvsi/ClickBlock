@@ -1,5 +1,6 @@
 from flask import Flask, request, url_for
 import requests
+import jsonify
 import os
 import json
 app = Flask(__name__)
@@ -42,8 +43,9 @@ def verify():
         print "Title:", newtitle.encode('ascii', 'ignore')
         print "Summary:", summary.encode('ascii', 'ignore')
 
-        # return 'verified\n'
-        return "{'title': newtitle, 'summary': summary, 'clickbait': 1}\n"
+        result = {'title': newtitle, 'summary': summary, 'clickbait': 1}
+
+        return jsonify(**result)
 
     if request.method == 'GET':
         return 'Please make a POST request to get summary, corrected title and clickbait'
