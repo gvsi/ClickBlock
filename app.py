@@ -50,7 +50,7 @@ def verify():
     title = d["meta"]["opengraph"]["title"]
     newtitle = d["meta"]["opengraph"]["description"].encode('ascii', 'ignore')
     summary = d["summary"][0].encode('ascii', 'ignore')
-    longsummary = "<br>".join(d["summary"])
+    longsummary = "<br>".join(d["summary"]).encode('ascii', 'ignore')
 
     # clickbaitProb = 1;
     vectorizer = joblib.load('learning/vectorizer.pkl')
