@@ -35,7 +35,7 @@ def verify():
         
         r = requests.post(url, headers=headers, data=json.dumps(data))
         print r.status_code
-        d = r.json
+        d = r.json()
         
         newtitle = d["meta"]["opengraph"]["description"]
         summary = d["summary"][0]
