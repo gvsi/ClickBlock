@@ -2,7 +2,7 @@
 Lately Facebook posts are increasingly loaded with links and we share a mutual hate for articles that misrepresent their content in the hope of attracting user clicks. This internet trend is deceptive and tedious, so we decided to do something about it.
 
 ## What it does
-ClickBlock is a chrome extension that automatically detects click-bait articles in your Facebook feed. Articles identified as click-bait are highlighted in red, and have their title replaced to be a more accurate description. Additionally, the extension provides a summary of the article when the user hovers over it.
+[ClickBlock](https://chrome.google.com/webstore/detail/clickblock/bgiafoodmnpnhoinjfhgkgepamghmonk) is a chrome extension that automatically detects click-bait articles in your Facebook feed. Articles identified as click-bait are highlighted in red, and have their title replaced to be a more accurate description. Additionally, the extension provides a summary of the article when the user hovers over it.
 
 ## How we built it
 ClickBlock was built using a flask server that handles the processing and identification of articles. A chrome extension calls the server and replaces the appropriate content.
@@ -15,7 +15,7 @@ While scraping data for training our classifier, we ran into issues with the New
 We also tried to implement our own article summarizer, but rapidly ran into issues with the quality of the summaries. Natural language processing is a large and complicated problem that we did not have enough time to solve during the hackathon.
 
 ## Accomplishments that we're proud of
-Our team worked together cohesively despite all of our members being from different countries.
+Our team worked together cohesively despite all of our members being from different countries. The Chrome Extention is now available for free download at this [link](https://chrome.google.com/webstore/detail/clickblock/bgiafoodmnpnhoinjfhgkgepamghmonk).
 
 ## What we learned
 We learned how to create a chrome extension, as well as how to use web scraping as an effective tool for obtaining useful data.
